@@ -1,6 +1,19 @@
 {
   "configurations": [
     {
+      "name": "tests",
+      "request": "launch",
+      "runtimeArgs": [
+        "run-script",
+        "test"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
       "name": "start",
       "request": "launch",
       "runtimeArgs": [

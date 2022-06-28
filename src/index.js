@@ -14,6 +14,6 @@ app.use('/products', productsRouter);
 app.use('/requests', requestsRouter);
 app.use('/users', usersRouter);
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => res.send('Hello DeliveryApp!'));
 
 app.listen(port, () => console.log(`Rodando na porta ${port}!`));

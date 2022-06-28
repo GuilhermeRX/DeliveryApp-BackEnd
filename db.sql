@@ -35,6 +35,14 @@ CREATE TABLE IF NOT EXISTS deliveryApp.request_status (
   name VARCHAR(100) NOT NULL
 );
 
+INSERT INTO deliveryApp.request_status (name)
+  VALUES 
+	('waiting'),
+	('confirmed'),
+  ('production'),
+  ('delivery'),
+  ('finished');
+
 CREATE TABLE IF NOT EXISTS deliveryApp.requests (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   product_id INT NOT NULL,

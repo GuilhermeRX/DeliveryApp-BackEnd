@@ -1,8 +1,8 @@
-const { Router } = require('express');
-const adressController = require('../controllers/adressController');
+// const { Router } = require('express');
+// const adressController = require('../controllers/adressController');
 
-const adressRouter = Router();
+// const adressRouter = Router();
 
-adressRouter.get('/', adressController);
+// adressRouter.get('/', adressController);
 
-module.exports = adressRouter;
+// module.exports = adressRouter;

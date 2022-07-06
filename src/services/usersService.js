@@ -1,6 +1,11 @@
-const usersModel = require('../models/usersModel');
+const Joi = require('joi');
+const runSchema = require('../schema/validate');
 
 const usersService = {
+  validateParamsId: runSchema(Joi.object({
+    id: Joi.number().required().positive().integer(),
+  })),
+
   getAll: async () => {
     const users = await usersModel.getAll();
     return users;

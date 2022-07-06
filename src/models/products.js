@@ -9,7 +9,11 @@ const Products = (sequelize, DataTypes) => {
   })
 
   Products.association = (models) => {
-    Products.hasMany(models.categories,
+    Products.belongsTo(models.categories,
       { foreignKey: 'category_id', as: 'category' })
   }
+
+  return Products;
 }
+
+module.exports = Products;

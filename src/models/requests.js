@@ -1,23 +1,30 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class requests extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
+const Request = (sequelize, DataTypes) => {
+  const Request = sequelize.define('requests', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  })
+
+  Request.association = (models) => {
+    Request.belongsTo(models.users, {
+      foreignKey: 'user_id',
+      as: 'user'
+    })
   }
-  requests.init({
-    user_id: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'requests',
-  });
-  return requests;
-};
+
+  Request.association = (models) => {
+    Request.belongsTo(models.adress, {
+      foreignKey: 'adress_id',
+      as: 'adress'
+    })
+  }
+
+  Request.association = (models) => {
+    Request.belongsTo(models['request_status'], {
+      foreignKey: 'status_id',
+      as: 'status'
+    })
+  }
+
+  return Request;
+}
+
+module.exports = Request;

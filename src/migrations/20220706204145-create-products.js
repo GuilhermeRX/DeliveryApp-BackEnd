@@ -9,7 +9,27 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      value: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      image: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        field: 'category_id',
+        allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        references: {
+          model: 'categories',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

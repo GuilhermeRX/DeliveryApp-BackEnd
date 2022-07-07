@@ -4,6 +4,10 @@ const RequestStatus = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
   })
 
+  RequestStatus.association = (models) => {
+    RequestStatus.hasOne(models.requests,
+      { foreignKey: 'status_id', as: 'request' })
+  }
   return RequestStatus;
 }
 

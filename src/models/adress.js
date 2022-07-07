@@ -10,7 +10,7 @@ const Adress = (sequelize, DataTypes) => {
     district: DataTypes.STRING,
     road: DataTypes.STRING,
     number: DataTypes.INTEGER,
-    user_id: { type: DataTypes.INTEGER, foreignKey: true }
+    userId: { type: DataTypes.INTEGER, foreignKey: true }
   }, {
     underscored: true,
   })

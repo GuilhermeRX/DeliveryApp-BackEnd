@@ -9,7 +9,35 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       cep: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      city: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      district: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      road: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      number: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        field: 'user_id',
+        references: {
+          model: 'users',
+          key: 'id',
+        }
       },
       createdAt: {
         allowNull: false,

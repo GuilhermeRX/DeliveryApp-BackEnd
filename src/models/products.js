@@ -3,13 +3,14 @@ const Products = (sequelize, DataTypes) => {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, },
     name: DataTypes.STRING,
     value: DataTypes.INTEGER,
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    category_id: { type: DataTypes.INTEGER, foreignKey: true }
   }, {
     underscored: true,
   })
 
   Products.association = (models) => {
-    Products.belongsTo(models.categories,
+    Products.hasMany(models.categories,
       { foreignKey: 'category_id', as: 'category' })
   }
 

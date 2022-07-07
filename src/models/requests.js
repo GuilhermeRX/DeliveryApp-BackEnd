@@ -11,13 +11,6 @@ const Request = (sequelize, DataTypes) => {
   }
 
   Request.association = (models) => {
-    Request.belongsTo(models.adress, {
-      foreignKey: 'adress_id',
-      as: 'adress'
-    })
-  }
-
-  Request.association = (models) => {
     Request.belongsTo(models['request_status'], {
       foreignKey: 'status_id',
       as: 'status'

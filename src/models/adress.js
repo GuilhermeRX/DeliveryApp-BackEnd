@@ -10,9 +10,15 @@ const Adress = (sequelize, DataTypes) => {
     district: DataTypes.STRING,
     road: DataTypes.STRING,
     number: DataTypes.INTEGER,
+    user_id: { type: DataTypes.INTEGER, foreignKey: true }
   }, {
     underscored: true,
   })
+
+  Adress.associate = (models) => {
+    Adress.belongsTo(models.users,
+      { foreignKey: 'user_id', as: 'user' })
+  }
   return Adress;
 }
 

@@ -9,14 +9,13 @@ const Users = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     image: DataTypes.STRING,
-    adress_id: DataTypes
   }, {
     underscored: true,
   })
 
   Users.associate = (models) => {
-    Users.hasMany(models.adress,
-      { foreignKey: 'adress_id', as: 'adress' })
+    Users.hasOne(models.adress,
+      { foreignKey: 'user_id', as: 'adress' })
   }
 
 

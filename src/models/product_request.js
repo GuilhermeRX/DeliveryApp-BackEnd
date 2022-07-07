@@ -7,14 +7,14 @@ const ProductRequest = (sequelize, DataTypes) => {
   })
 
   ProductRequest.associate = (models) => {
-    models.products.belongsToMany(models.requests, {
+    models.Product.belongsToMany(models.Request, {
       as: 'request',
       through: ProductRequest,
       foreignKey: 'product_id',
       otherKey: 'request_id',
     })
 
-    models.requests.belongsToMany(models.products, {
+    models.Request.belongsToMany(models.Product, {
       as: 'product',
       through: ProductRequest,
       foreignKey: 'request_id',

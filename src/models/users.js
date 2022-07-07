@@ -15,10 +15,10 @@ const User = (sequelize, DataTypes) => {
   })
 
   User.associate = (models) => {
-    User.hasOne(models.adress,
+    User.hasOne(models.Adress,
       { foreignKey: 'user_id', as: 'adress' })
 
-    User.hasOne(models.requests,
+    User.hasOne(models.Request,
       { foreignKey: 'user_id', as: 'request' })
   }
   return User;

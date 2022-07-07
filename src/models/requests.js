@@ -7,15 +7,15 @@ const Request = (sequelize, DataTypes) => {
   })
 
   Request.association = (models) => {
-    Request.hasOne(models['product_request'],
+    Request.hasOne(models.ProductRequest,
       { foreignKey: 'request_id', as: 'productsRequest' })
 
-    Request.belongsToMany(models.users, {
+    Request.belongsToMany(models.User, {
       foreignKey: 'user_id',
       as: 'user'
     })
 
-    Request.belongsToMany(models['request_status'], {
+    Request.belongsToMany(models.RequestStatus, {
       foreignKey: 'status_id',
       as: 'status'
     })

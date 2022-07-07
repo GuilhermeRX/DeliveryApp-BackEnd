@@ -11,10 +11,10 @@ const Product = (sequelize, DataTypes) => {
   })
 
   Product.association = (models) => {
-    Product.hasOne(models.categories,
+    Product.hasOne(models.Category,
       { foreignKey: 'category_id', as: 'category' })
 
-    Product.hasOne(models['product_request'],
+    Product.hasOne(models.ProductRequest,
       { foreignKey: 'product_id', as: 'productsRequest' })
   }
 

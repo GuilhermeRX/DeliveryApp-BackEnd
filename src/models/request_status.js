@@ -8,7 +8,7 @@ const RequestStatus = (sequelize, DataTypes) => {
   })
 
   RequestStatus.association = (models) => {
-    RequestStatus.hasOne(models.requests,
+    RequestStatus.hasOne(models.Request,
       { foreignKey: 'status_id', as: 'request' })
   }
   return RequestStatus;

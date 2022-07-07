@@ -2,7 +2,7 @@ const usersService = require('../services/usersService');
 
 const usersController = {
   getAll: async (req, res) => {
-    const users = await usersService.getAll();
+    const users = await usersService.getAll(req.query.includeAdresses);
     res.status(200).json(users);
   },
 

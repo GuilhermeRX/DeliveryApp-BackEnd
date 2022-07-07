@@ -30,10 +30,10 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        field: 'user_id',
         allowNull: false,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-        field: 'user_id',
         references: {
           model: 'users',
           key: 'id',

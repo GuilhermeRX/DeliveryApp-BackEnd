@@ -17,7 +17,7 @@ const Adress = (sequelize, DataTypes) => {
 
   Adress.associate = (models) => {
     Adress.belongsTo(models.User,
-      { foreignKey: 'user_id', as: 'user' })
+      { foreignKey: 'userId', as: 'user' })
   }
   return Adress;
 }

@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const runSchema = require('../schema/validate');
-const { User, Adress } = require('../models');
+const { User, Adress } = require('../database/models');
 
 const usersService = {
   validateParamsId: runSchema(Joi.object({
@@ -19,10 +19,21 @@ const usersService = {
     return users;
   },
 
-  getById: async (id) => {
+  getById: async (id, includeAddresses) => {
+    if (includeAddresses) {
+      const user = await User.findAll({
+        include: {
+          model: Adress,
+          as: 'adress',
+          where: {
+            userId: id,
+          },
+        },
+      });
+      return user[0];
+    }
     const user = await User.findByPk(id);
-    const adress = await Adress.findAll({ where: { userId: id } });
-    return { user, adress };
+    return user;
   },
 
   checkIfExistsId: async (id) => {

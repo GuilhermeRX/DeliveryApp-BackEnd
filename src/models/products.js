@@ -12,6 +12,9 @@ const Products = (sequelize, DataTypes) => {
   Products.association = (models) => {
     Products.hasOne(models.categories,
       { foreignKey: 'category_id', as: 'category' })
+
+    Products.hasOne(models['product_request'],
+      { foreignKey: 'product_id', as: 'productsRequest' })
   }
 
   return Products;

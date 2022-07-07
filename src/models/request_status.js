@@ -1,7 +1,10 @@
 const RequestStatus = (sequelize, DataTypes) => {
-  const RequestStatus = sequelize.define('request_status', {
+  const RequestStatus = sequelize.define('RequestStatus', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: DataTypes.STRING,
+  }, {
+    tableName: 'request_status',
+    underscored: true,
   })
 
   RequestStatus.association = (models) => {

@@ -21,9 +21,7 @@ const User = (sequelize, DataTypes) => {
     User.hasOne(models.requests,
       { foreignKey: 'user_id', as: 'request' })
   }
-
-
-  return Users;
+  return User;
 }
 
 module.exports = User;

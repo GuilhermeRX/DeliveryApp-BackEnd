@@ -1,5 +1,5 @@
 const Adress = (sequelize, DataTypes) => {
-  const Adress = sequelize.define('adress', {
+  const Adress = sequelize.define('Adress', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -12,6 +12,7 @@ const Adress = (sequelize, DataTypes) => {
     number: DataTypes.INTEGER,
     userId: { type: DataTypes.INTEGER, foreignKey: true }
   }, {
+    tableName: 'adresses',
     underscored: true,
   })
 

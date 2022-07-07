@@ -1,7 +1,8 @@
 const ProductRequest = (sequelize, DataTypes) => {
-  const ProductRequest = sequelize.define('product_request', {
+  const ProductRequest = sequelize.define('ProductRequest', {
     quantity: DataTypes.INTEGER,
   }, {
+    tableName: 'product_request',
     underscored: true,
   })
 

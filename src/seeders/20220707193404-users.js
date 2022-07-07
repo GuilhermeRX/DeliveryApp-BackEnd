@@ -7,8 +7,8 @@ module.exports = {
           email: 'guilhermerx18@gmail.com',
           password: '123456',
           image: 'www.minhaimagem.com',
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
         },
         {
           fullname: 'Victoria Ferreira',

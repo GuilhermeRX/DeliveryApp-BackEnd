@@ -12,12 +12,12 @@ module.exports = {
         {
           name: 'Confirmed',
           created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         {
           name: 'Production',
           created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         {
           name: 'Delivery',

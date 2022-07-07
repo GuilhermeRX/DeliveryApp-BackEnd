@@ -1,5 +1,5 @@
-const Users = (sequelize, DataTypes) => {
-  const Users = sequelize.define('users', {
+const User = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -10,14 +10,15 @@ const Users = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     image: DataTypes.STRING,
   }, {
+    tableName: 'users',
     underscored: true,
   })
 
-  Users.associate = (models) => {
-    Users.hasOne(models.adress,
+  User.associate = (models) => {
+    User.hasOne(models.adress,
       { foreignKey: 'user_id', as: 'adress' })
 
-    Users.hasOne(models.requests,
+    User.hasOne(models.requests,
       { foreignKey: 'user_id', as: 'request' })
   }
 
@@ -25,4 +26,4 @@ const Users = (sequelize, DataTypes) => {
   return Users;
 }
 
-module.exports = Users;
+module.exports = User;

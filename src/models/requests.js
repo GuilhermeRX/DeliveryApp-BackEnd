@@ -1,6 +1,9 @@
 const Request = (sequelize, DataTypes) => {
-  const Request = sequelize.define('requests', {
+  const Request = sequelize.define('Request', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  }, {
+    tableName: 'requests',
+    underscored: true
   })
 
   Request.association = (models) => {

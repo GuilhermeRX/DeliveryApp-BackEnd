@@ -11,8 +11,8 @@ module.exports = {
           road: 'Dom Antônio Cabral',
           number: 469,
           user_id: 1,
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
         },
         {
           cep: '27286323',
@@ -21,8 +21,8 @@ module.exports = {
           road: 'Rua do Jacó',
           number: 541,
           user_id: 2,
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
         },
         {
           cep: '27282510',
@@ -31,8 +31,8 @@ module.exports = {
           road: 'Rua do Mer Fan',
           number: 147,
           user_id: 3,
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
         },
       ], {})
   },

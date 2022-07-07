@@ -7,20 +7,20 @@ module.exports = {
         {
           user_id: 1,
           status_id: 1,
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         {
           user_id: 2,
           status_id: 2,
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         {
           user_id: 3,
           status_id: 3,
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP')
         },
       ], {})
   },

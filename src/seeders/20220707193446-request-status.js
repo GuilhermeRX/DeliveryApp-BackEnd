@@ -6,28 +6,28 @@ module.exports = {
       [
         {
           name: 'Waiting',
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         {
           name: 'Confirmed',
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
           updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         {
           name: 'Production',
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
           updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         {
           name: 'Delivery',
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         {
           name: 'Finished',
-          createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')
+          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+          updated_at: Sequelize.literal('CURRENT_TIMESTAMP')
         },
       ], {})
   },

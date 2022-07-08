@@ -12,6 +12,12 @@ const usersController = {
     const user = await usersService.getById(id, req.query.includeAddresses);
     res.status(200).json(user);
   },
+
+  create: async (req, res) => {
+    const object = usersService.validateBody(req.body);
+    const insertId = await usersService.create(object);
+    res.status(201).json({ id: insertId, name: req.body.fullname });
+  },
 };
 
 module.exports = usersController;

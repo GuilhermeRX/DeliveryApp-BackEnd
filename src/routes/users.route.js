@@ -5,5 +5,6 @@ const usersRouter = Router();
 
 usersRouter.get('/', usersController.getAll);
 usersRouter.get('/:id', usersController.getById);
+usersRouter.post('/', usersController.create);
 
 module.exports = usersRouter;

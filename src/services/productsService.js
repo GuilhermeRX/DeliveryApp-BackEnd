@@ -9,7 +9,7 @@ const productsService = {
 
   validateBody: runSchema(Joi.object({
     name: Joi.string().required().min(1),
-    value: Joi.number().required().positive(),
+    value: Joi.number().required().precision(2).positive(),
     image: Joi.string().required().min(3),
     categoryId: Joi.number().required().integer().min(1),
   })),
@@ -35,8 +35,9 @@ const productsService = {
     return productId;
   },
 
-  edit: async (id, object) => {
-    await Product.update({ ...object }, { where: { id } });
+  update: async (id, object) => {
+    const product = await Product.update({ ...object }, { where: { id } });
+    return product;
   },
 
   delete: async (id) => {

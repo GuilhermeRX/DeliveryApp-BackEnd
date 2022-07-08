@@ -36,8 +36,7 @@ const productsService = {
   },
 
   update: async (id, object) => {
-    const product = await Product.update({ ...object }, { where: { id } });
-    return product;
+    await Product.update({ ...object }, { where: { id } });
   },
 
   delete: async (id) => {

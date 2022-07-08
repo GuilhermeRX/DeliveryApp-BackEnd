@@ -24,8 +24,8 @@ const productsController = {
     const object = productsService.validateBody(req.body);
     await productsService.checkIfExistsId(id);
 
-    const product = await productsService.update(id, object);
-    res.status(200).json(product);
+    await productsService.update(id, object);
+    res.status(200).json({ id, ...object });
   },
 };
 

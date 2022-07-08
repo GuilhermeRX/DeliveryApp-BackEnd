@@ -76,6 +76,11 @@ const usersService = {
     return result;
   },
 
+  update: async (id, object) => {
+    const user = await User.update({ ...object }, { where: { id } });
+    return [user];
+  },
+
 };
 
 module.exports = usersService;

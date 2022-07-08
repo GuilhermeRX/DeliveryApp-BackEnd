@@ -18,6 +18,14 @@ const usersController = {
     const insertId = await usersService.create(object);
     res.status(201).json({ id: insertId, name: req.body.fullname });
   },
+
+  update: async (req, res) => {
+    const { id } = usersService.validateParamsId(req.params);
+    await usersService.checkIfExistsId(id);
+    await usersService.update(id, req.body);
+
+    res.status(200).json({ id, ...req.body });
+  },
 };
 
 module.exports = usersController;

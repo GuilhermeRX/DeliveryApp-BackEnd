@@ -77,8 +77,16 @@ const usersService = {
   },
 
   update: async (id, object) => {
-    const user = await User.update({ ...object }, { where: { id } });
-    return [user];
+    const { fullname, email, password, image, adress } = object;
+    const newUser = { fullname, email, password, image };
+
+    await sequelize.transaction(async (t) => {
+      await User
+        .update({ ...newUser }, { where: { id } }, { transaction: t });
+
+      await Adress
+        .update({ ...adress }, { where: { userId: id } }, { transaction: t });
+    });
   },
 
 };

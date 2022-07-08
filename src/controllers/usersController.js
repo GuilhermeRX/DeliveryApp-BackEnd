@@ -21,10 +21,12 @@ const usersController = {
 
   update: async (req, res) => {
     const { id } = usersService.validateParamsId(req.params);
-    await usersService.checkIfExistsId(id);
-    await usersService.update(id, req.body);
+    const object = usersService.validateBody(req.body);
 
-    res.status(200).json({ id, ...req.body });
+    await usersService.checkIfExistsId(id);
+    await usersService.update(id, object);
+
+    res.status(200).json({ id, ...object });
   },
 };
 

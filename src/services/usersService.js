@@ -89,6 +89,10 @@ const usersService = {
     });
   },
 
+  delete: async (id) => {
+    await User.destroy({ where: { id } });
+  },
+
 };
 
 module.exports = usersService;

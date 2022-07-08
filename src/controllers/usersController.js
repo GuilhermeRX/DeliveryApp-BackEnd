@@ -16,7 +16,7 @@ const usersController = {
   create: async (req, res) => {
     const object = usersService.validateBody(req.body);
     const insertId = await usersService.create(object);
-    res.status(201).json({ id: insertId, name: req.body.fullname });
+    res.status(201).json({ id: insertId, ...req.body });
   },
 
   update: async (req, res) => {
@@ -27,6 +27,13 @@ const usersController = {
     await usersService.update(id, object);
 
     res.status(200).json({ id, ...object });
+  },
+
+  delete: async (req, res) => {
+    const { id } = usersService.validateParamsId(req.params);
+    await usersService.checkIfExistsId(id);
+    await usersService.delete(id);
+    res.sendStatus(204);
   },
 };
 

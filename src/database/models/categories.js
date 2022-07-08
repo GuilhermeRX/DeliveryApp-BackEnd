@@ -8,9 +8,10 @@ const Category = (sequelize, DataTypes) => {
   })
 
   Category.associate = (models) => {
-    Category.hasMany(models.Product,
-      { foreignKey: 'categoryId', as: 'products_category' })
+    Category.hasOne(models.Product,
+      { foreignKey: 'categoryId', as: 'products' })
   }
+
   return Category;
 }
 

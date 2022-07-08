@@ -4,7 +4,6 @@ const Product = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     value: DataTypes.INTEGER,
     image: DataTypes.STRING,
-    categoryId: { type: DataTypes.INTEGER, foreignKey: true }
   }, {
     tableName: 'products',
     underscored: true,
@@ -12,7 +11,7 @@ const Product = (sequelize, DataTypes) => {
 
   Product.association = (models) => {
     Product.hasOne(models.Category,
-      { foreignKey: 'category_id', as: 'category' })
+      { foreignKey: 'categoryId', as: 'category' })
 
     Product.hasOne(models.ProductRequest,
       { foreignKey: 'product_id', as: 'productsRequest' })

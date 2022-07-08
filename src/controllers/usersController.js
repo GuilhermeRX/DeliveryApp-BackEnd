@@ -22,8 +22,8 @@ const usersController = {
 
   create: async (req, res) => {
     const object = usersService.validateBody(req.body);
-    const insertId = await usersService.create(object);
-    res.status(201).json({ id: insertId, ...req.body });
+    const user = await usersService.create(object);
+    res.status(201).json(user);
   },
 
   update: async (req, res) => {

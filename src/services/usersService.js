@@ -65,14 +65,15 @@ const usersService = {
   create: async (object) => {
     const { fullname, email, password, image, adress } = object;
     const { cep, city, district, road, number } = adress;
+
     const result = await sequelize.transaction(async (t) => {
-      const user = await User
+      const createdUser = await User
         .create({ fullname, email, password, image }, { transaction: t });
 
-      await Adress
-        .create({ cep, city, district, road, number, userId: user.id }, { transaction: t });
+      const createdAdress = await Adress
+        .create({ cep, city, district, road, number, userId: createdUser.id }, { transaction: t });
 
-      return user.id;
+      return { ...createdUser.toJSON(), adress: createdAdress.toJSON() };
     });
     return result;
   },

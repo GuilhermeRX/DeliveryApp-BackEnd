@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const Sequelize = require('sequelize');
+const { Op } = require('sequelize');
 const runSchema = require('../schema/validate');
 const { User, Adress } = require('../database/models');
 
@@ -93,6 +94,19 @@ const usersService = {
     await User.destroy({ where: { id } });
   },
 
+  search: async (search, includeAddresses) => {
+    if (includeAddresses) {
+      const user = User.findAll(
+        {
+          include: { model: Adress, as: 'adress' },
+          where: { fullname: { [Op.substring]: search } },
+        },
+      );
+      return user;
+    }
+    const user = User.findAll({ where: { fullname: { [Op.substring]: search } } });
+    return user;
+  },
 };
 
 module.exports = usersService;

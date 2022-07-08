@@ -2,7 +2,14 @@ const usersService = require('../services/usersService');
 
 const usersController = {
   getAll: async (req, res) => {
-    const users = await usersService.getAll(req.query.includeAddresses);
+    const { search, includeAddresses } = req.query;
+
+    if (search) {
+      const searchUser = await usersService.search(search, includeAddresses);
+      return res.status(200).json(searchUser);
+    }
+
+    const users = await usersService.getAll(includeAddresses);
     res.status(200).json(users);
   },
 

@@ -1,10 +1,12 @@
 require('express-async-errors');
 require('dotenv').config();
 const express = require('express');
+
+const usersRouter = require('./routes/users.route');
 const productsRouter = require('./routes/products.route');
+const categoriesRouter = require('./routes/categories.route');
 // const adressRouter = require('./routes/adress.route');
 // const requestsRouter = require('./routes/requests.route');
-const usersRouter = require('./routes/users.route');
 
 const port = process.env.MYAPP_PORT;
 
@@ -14,6 +16,7 @@ app.use(express.json());
 // app.use('/requests', requestsRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/categories', categoriesRouter);
 
 app.get('/', (req, res) => res.send('Hello DeliveryApp!'));
 

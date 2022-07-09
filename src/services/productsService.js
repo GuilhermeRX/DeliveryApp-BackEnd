@@ -29,7 +29,7 @@ const productsService = {
 
   getById: async (id) => {
     const product = await Product.findByPk(id);
-    return product.id;
+    return product;
   },
 
   create: async (object) => {

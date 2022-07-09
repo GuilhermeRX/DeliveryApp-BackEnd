@@ -2,7 +2,7 @@ const categoriesService = require('../services/categoriesService');
 
 const categoriesController = {
   getAll: async (req, res) => {
-    const categories = await categoriesService.getAll();
+    const categories = await categoriesService.getAll(req.query.includeProducts);
     res.status(200).json(categories);
   },
 

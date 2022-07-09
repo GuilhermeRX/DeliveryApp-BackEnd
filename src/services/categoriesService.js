@@ -1,13 +1,20 @@
-const { Category } = require('../database/models');
+const { Category, Product } = require('../database/models');
 
 const categoriesService = {
-  getAll: async () => {
-    // if (includeProducts) {
-    //   const categories = await Category.findAll(
-    //     { include: { model: Product, as: 'products' } },
-    //   );
-    //   return categories;
-    // }
+  getAll: async (includeProducts) => {
+    if (includeProducts) {
+      const categories = await Category.findAll(
+        {
+          attributes: { exclude: ['createdAt', 'updatedAt'] },
+          include: {
+            model: Product,
+            as: 'products',
+            attributes: { exclude: ['createdAt', 'updatedAt', 'categoryId'] },
+          },
+        },
+      );
+      return categories;
+    }
     const categories = await Category.findAll();
     return categories;
   },

@@ -10,15 +10,15 @@ const ProductRequest = (sequelize, DataTypes) => {
     models.Product.belongsToMany(models.Request, {
       as: 'request',
       through: ProductRequest,
-      foreignKey: 'product_id',
-      otherKey: 'request_id',
+      foreignKey: 'productId',
+      otherKey: 'requestId',
     })
 
     models.Request.belongsToMany(models.Product, {
       as: 'product',
       through: ProductRequest,
-      foreignKey: 'request_id',
-      otherKey: 'product_id'
+      foreignKey: 'requestId',
+      otherKey: 'productId'
     })
   }
   return ProductRequest;

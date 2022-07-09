@@ -1,7 +1,7 @@
+require('express-async-errors');
+require('dotenv').config();
 const express = require('express');
 const productsRouter = require('./routes/products.route');
-require('dotenv').config();
-require('express-async-errors');
 // const adressRouter = require('./routes/adress.route');
 // const requestsRouter = require('./routes/requests.route');
 const usersRouter = require('./routes/users.route');

@@ -14,7 +14,7 @@ const Product = (sequelize, DataTypes) => {
       { foreignKey: 'categoryId', as: 'category' })
 
     Product.hasOne(models.ProductRequest,
-      { foreignKey: 'product_id', as: 'productsRequest' })
+      { foreignKey: 'productId', as: 'productsRequest' })
   }
 
   return Product;

@@ -1,7 +1,6 @@
 const Joi = require('joi');
 const { Product } = require('../database/models');
 const runSchema = require('../schema/validate');
-const { Category } = require('../database/models');
 
 const productsService = {
   validateParamsId: runSchema(Joi.object({
@@ -22,7 +21,9 @@ const productsService = {
   },
 
   getAll: async () => {
-    const products = await Product.findAll({ include: { model: Category, as: 'category' } });
+    const products = await Product.findAll({
+      attributes: { exclude: ['categoryId', 'createdAt', 'updatedAt'] },
+    });
     return products;
   },
 

@@ -28,7 +28,7 @@ module.exports = {
         onDelete: 'CASCADE',
         references: {
           model: 'categories',
-          key: 'id'
+          key: 'id',
         }
       },
       createdAt: {

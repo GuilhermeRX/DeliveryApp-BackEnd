@@ -7,7 +7,7 @@ const categoriesController = {
   },
 
   getById: async (req, res) => {
-    const category = await categoriesService.getById(req.params.id);
+    const category = await categoriesService.getById(req.params.id, req.query.includeProducts);
     res.status(200).json(category);
   },
 

@@ -34,20 +34,22 @@ const categoriesService = {
         });
       return categories;
     }
-    const categories = await Category.findByPk(id, { attributes: { exclude: ['createdAt', 'updatedAt'] } });
+    const categories = await Category.findByPk(id,
+      { attributes: { exclude: ['createdAt', 'updatedAt'] } });
     return categories;
   },
 
-  create: async () => {
-
+  create: async (object) => {
+    const category = await Category.create(object);
+    return category;
   },
 
-  update: async () => {
-
+  update: async (id, object) => {
+    await Category.update(object, { where: { id } });
   },
 
-  delete: async () => {
-
+  delete: async (id) => {
+    await Category.destroy({ where: { id } });
   },
 };
 

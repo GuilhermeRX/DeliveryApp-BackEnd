@@ -33,8 +33,8 @@ const productsService = {
   },
 
   create: async (object) => {
-    const productId = await Product.create({ ...object });
-    return productId;
+    const product = await Product.create({ ...object });
+    return product;
   },
 
   update: async (id, object) => {

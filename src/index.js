@@ -3,9 +3,8 @@ require('dotenv').config();
 const express = require('express');
 
 const usersRouter = require('./routes/users.route');
-const productsRouter = require('./routes/products.route');
 const categoriesRouter = require('./routes/categories.route');
-// const adressRouter = require('./routes/adress.route');
+const productsRouter = require('./routes/products.route');
 // const requestsRouter = require('./routes/requests.route');
 
 const port = process.env.MYAPP_PORT;
@@ -13,10 +12,10 @@ const port = process.env.MYAPP_PORT;
 const app = express();
 app.use(express.json());
 
-// app.use('/requests', requestsRouter);
 app.use('/users', usersRouter);
-app.use('/products', productsRouter);
 app.use('/categories', categoriesRouter);
+app.use('/products', productsRouter);
+// app.use('/requests', requestsRouter);
 
 app.get('/', (req, res) => res.send('Hello DeliveryApp!'));
 

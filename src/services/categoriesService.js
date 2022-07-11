@@ -45,7 +45,7 @@ const categoriesService = {
   },
 
   update: async (id, object) => {
-    await Category.update(object, { where: { id } });
+    await Category.update({ ...object }, { where: { id } });
   },
 
   delete: async (id) => {

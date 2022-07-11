@@ -17,7 +17,7 @@ const categoriesController = {
   },
 
   update: async (req, res) => {
-    await categoriesService.update(req.body);
+    await categoriesService.update(req.params.id, req.body);
     res.status(200).json({ id: req.params.id, ...req.body });
   },
 

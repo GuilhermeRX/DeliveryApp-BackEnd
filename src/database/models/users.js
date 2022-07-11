@@ -19,7 +19,7 @@ const User = (sequelize, DataTypes) => {
       { foreignKey: 'userId', as: 'adress' })
 
     User.hasOne(models.Request,
-      { foreignKey: 'user_id', as: 'request' })
+      { foreignKey: 'userId', as: 'request' })
   }
   return User;
 }

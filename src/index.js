@@ -5,7 +5,7 @@ const express = require('express');
 const usersRouter = require('./routes/users.route');
 const categoriesRouter = require('./routes/categories.route');
 const productsRouter = require('./routes/products.route');
-// const requestsRouter = require('./routes/requests.route');
+const requestsRouter = require('./routes/requests.route');
 
 const port = process.env.MYAPP_PORT;
 
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use('/users', usersRouter);
 app.use('/categories', categoriesRouter);
 app.use('/products', productsRouter);
-// app.use('/requests', requestsRouter);
+app.use('/requests', requestsRouter);
 
 app.get('/', (req, res) => res.send('Hello DeliveryApp!'));
 

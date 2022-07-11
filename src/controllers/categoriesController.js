@@ -8,6 +8,7 @@ const categoriesController = {
 
   getById: async (req, res) => {
     const { id } = categoriesService.validateParamsId(req.params);
+    await categoriesService.checkIfExists(id);
     const category = await categoriesService.getById(id, req.query.includeProducts);
     res.status(200).json(category);
   },
@@ -20,6 +21,7 @@ const categoriesController = {
 
   update: async (req, res) => {
     const { id } = categoriesService.validateParamsId(req.params);
+    await categoriesService.checkIfExists(id);
     const object = categoriesService.validateBody(req.body);
     await categoriesService.update(id, object);
     res.status(200).json({ id, ...object });
@@ -27,6 +29,7 @@ const categoriesController = {
 
   delete: async (req, res) => {
     const { id } = categoriesService.validateParamsId(req.params);
+    await categoriesService.checkIfExists(id);
     await categoriesService.delete(id);
     res.sendStatus(204);
   },

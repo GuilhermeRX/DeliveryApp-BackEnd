@@ -11,6 +11,12 @@ const categoriesService = {
     name: Joi.string().required(),
   })),
 
+  checkIfExists: async (id) => {
+    const category = await Category.findByPk(id);
+    if (!category) throw new Error('Category not exists');
+    return true;
+  },
+
   getAll: async (includeProducts) => {
     if (includeProducts) {
       const categories = await Category.findAll(

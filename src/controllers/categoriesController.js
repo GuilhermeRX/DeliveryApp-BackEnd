@@ -7,22 +7,27 @@ const categoriesController = {
   },
 
   getById: async (req, res) => {
-    const category = await categoriesService.getById(req.params.id, req.query.includeProducts);
+    const { id } = categoriesService.validateParamsId(req.params);
+    const category = await categoriesService.getById(id, req.query.includeProducts);
     res.status(200).json(category);
   },
 
   create: async (req, res) => {
-    const category = await categoriesService.create(req.body);
+    const object = categoriesService.validateBody(req.body);
+    const category = await categoriesService.create(object);
     res.status(201).json(category);
   },
 
   update: async (req, res) => {
-    await categoriesService.update(req.params.id, req.body);
-    res.status(200).json({ id: req.params.id, ...req.body });
+    const { id } = categoriesService.validateParamsId(req.params);
+    const object = categoriesService.validateBody(req.body);
+    await categoriesService.update(id, object);
+    res.status(200).json({ id, ...object });
   },
 
   delete: async (req, res) => {
-    await categoriesService.delete(req.params.id);
+    const { id } = categoriesService.validateParamsId(req.params);
+    await categoriesService.delete(id);
     res.sendStatus(204);
   },
 };

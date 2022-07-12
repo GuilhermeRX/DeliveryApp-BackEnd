@@ -28,7 +28,7 @@ const requestsService = {
     return newProducts;
   },
 
-  refactorAll: (array, boolean) => {
+  refactorAll: (array) => {
     const newArray = array.map((request) => {
       const newObj = {
         request: request.id,

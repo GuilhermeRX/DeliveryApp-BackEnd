@@ -21,7 +21,7 @@ const requestsController = {
   update: async (req, res) => {
     const { id } = requestsService.validateParamsId(req.params);
     await requestsService.checkIfExists(id);
-    await requestsService.update(req.body);
+    await requestsService.update(req.body, id);
     res.status(200).json({ id, ...req.body });
   },
 

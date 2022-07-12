@@ -18,56 +18,94 @@ const requestsService = {
     return true;
   },
 
+  refactorProducts: (object) => {
+    const newProducts = object.products.map((items) => ({
+      id: items.id,
+      name: items.name,
+      value: items.value,
+      quantity: items.ProductRequest.quantity,
+    }));
+    return newProducts;
+  },
+
   refactorAll: (array, boolean) => {
     const newArray = array.map((request) => {
-      const newProducts = request.products.map((items) => ({
-        id: items.id,
-        name: items.name,
-        value: items.value,
-        quantity: items.ProductRequest.quantity,
-      }));
       const newObj = {
         request: request.id,
         name: request.user.fullname,
         email: request.user.email,
         status: request.status.name,
-        products: boolean && newProducts,
+        total: request.toJSON().total,
       };
       return newObj;
     });
     return newArray;
   },
 
-  getAll: async () => {
-    const requests = await Request.findAll({
-      attributes: ['id'],
-      include:
-        [
-          { model: User, as: 'user', attributes: ['fullname', 'email'] },
-          { model: RequestStatus, as: 'status', attributes: ['name'] },
-        ],
-    });
-
-    return requestsService.refactorAll(requests);
+  refactorId: (object, boolean) => {
+    const newObj = {
+      request: object.id,
+      name: object.user.fullname,
+      email: object.user.email,
+      status: object.status.name,
+      total: object.total,
+      products: boolean && requestsService.refactorProducts(object),
+    };
+    return newObj;
   },
 
-  getById: async (id) => {
-    const request = await Request.findAll({
-      where: { id },
-      attributes: ['id'],
+  getAll: async () => {
+    const requests = await Request.findAll({
       include:
         [
           {
             model: Product,
             as: 'products',
-            through: { attributes: ['quantity'] },
-            attributes: ['id', 'name', 'value'],
+            through: { attributes: [] },
+            attributes: [],
           },
           { model: User, as: 'user', attributes: ['fullname', 'email'] },
           { model: RequestStatus, as: 'status', attributes: ['name'] },
         ],
+      attributes: ['id', [sequelize.fn('sum', sequelize.literal('value * quantity')), 'total']],
+      group: ['id'],
     });
-    return requestsService.refactorAll(request, true);
+    return requestsService.refactorAll(requests);
+  },
+
+  getTotalId: async (id) => {
+    const request = await Request.findByPk(id, {
+      include: [
+        {
+          model: Product,
+          as: 'products',
+          through: { attributes: [] },
+          attributes: [],
+        },
+      ],
+      attributes: ['id', [sequelize.fn('sum', sequelize.literal('value * quantity')), 'total']],
+      group: ['id'],
+    });
+
+    return request.toJSON();
+  },
+
+  getById: async (id) => {
+    const request = await Request.findByPk(id, {
+      include: [
+        {
+          model: Product,
+          as: 'products',
+          through: { attributes: ['quantity'] },
+          attributes: ['id', 'name', 'value'],
+        },
+        { model: User, as: 'user', attributes: ['fullname', 'email'] },
+        { model: RequestStatus, as: 'status', attributes: ['name'] },
+      ],
+    });
+    const total = await requestsService.getTotalId(id);
+    const newObj = { ...request.toJSON(), total: total.total };
+    return requestsService.refactorId(newObj, true);
   },
 
   create: async (object) => {

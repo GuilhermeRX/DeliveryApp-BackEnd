@@ -24,25 +24,6 @@ const requestsService = {
     return newArray;
   },
 
-  getAllAndProducts: async () => {
-    const requests = await Request.findAll({
-      attributes: ['id'],
-      include: [
-        {
-          model: Product,
-          as: 'products',
-          through:
-            { attributes: [] },
-          attributes: ['id', 'name', 'value'],
-        },
-        { model: User, as: 'user', attributes: ['fullname', 'email'] },
-        { model: RequestStatus, as: 'status', attributes: ['name'] },
-      ],
-    });
-
-    return requestsService.refactorAll(requests, true);
-  },
-
   getAll: async () => {
     const requests = await Request.findAll({
       attributes: ['id'],
@@ -57,8 +38,22 @@ const requestsService = {
   },
 
   getById: async (id) => {
-    const request = await Request.findByPk(id);
-    return request;
+    const request = await Request.findAll({
+      where: { id },
+      attributes: ['id'],
+      include:
+        [
+          {
+            model: Product,
+            as: 'products',
+            through: { attributes: [] },
+            attributes: ['id', 'name', 'value'],
+          },
+          { model: User, as: 'user', attributes: ['fullname', 'email'] },
+          { model: RequestStatus, as: 'status', attributes: ['name'] },
+        ],
+    });
+    return requestsService.refactorAll(request, true);
   },
 
   create: async (object) => {

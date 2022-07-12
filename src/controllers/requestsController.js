@@ -2,10 +2,6 @@ const requestsService = require('../services/requestsService');
 
 const requestsController = {
   getAll: async (req, res) => {
-    if (req.query.includeProducts) {
-      const requests = await requestsService.getAllAndProducts();
-      return res.status(200).json(requests);
-    }
     const requests = await requestsService.getAll();
     res.status(200).json(requests);
   },

@@ -7,9 +7,9 @@ const RequestStatus = (sequelize, DataTypes) => {
     underscored: true,
   })
 
-  RequestStatus.association = (models) => {
+  RequestStatus.associate = (models) => {
     RequestStatus.hasMany(models.Request,
-      { foreignKey: 'statusId', as: 'request' })
+      { foreignKey: 'statusId', as: 'requests' })
   }
   return RequestStatus;
 }

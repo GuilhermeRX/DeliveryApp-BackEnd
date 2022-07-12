@@ -9,12 +9,9 @@ const Product = (sequelize, DataTypes) => {
     underscored: true,
   })
 
-  Product.association = (models) => {
+  Product.associate = (models) => {
     Product.belongsTo(models.Category,
       { foreignKey: 'categoryId', as: 'category' })
-
-    Product.hasOne(models.ProductRequest,
-      { foreignKey: 'productId', as: 'productsRequest' })
   }
 
   return Product;

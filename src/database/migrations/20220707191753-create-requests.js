@@ -18,6 +18,7 @@ module.exports = {
           key: 'id'
         }
       },
+
       statusId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -29,6 +30,7 @@ module.exports = {
           key: 'id'
         }
       },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

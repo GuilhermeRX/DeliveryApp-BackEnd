@@ -1,6 +1,11 @@
 const Joi = require('joi');
+const Sequelize = require('sequelize');
 const runSchema = require('../schema/validate');
-const { Request, RequestStatus, User, Product } = require('../database/models');
+const { Request, RequestStatus, User, Product, ProductRequest } = require('../database/models');
+
+const config = require('../database/config/config');
+
+const sequelize = new Sequelize(config.development);
 
 const requestsService = {
   validateParamsId: runSchema(Joi.object({
@@ -14,13 +19,22 @@ const requestsService = {
   },
 
   refactorAll: (array, boolean) => {
-    const newArray = array.map((request) => ({
-      request: request.id,
-      name: request.user.fullname,
-      email: request.user.email,
-      status: request.status.name,
-      products: boolean && request.products,
-    }));
+    const newArray = array.map((request) => {
+      const newProducts = request.products.map((items) => ({
+        id: items.id,
+        name: items.name,
+        value: items.value,
+        quantity: items.ProductRequest.quantity,
+      }));
+      const newObj = {
+        request: request.id,
+        name: request.user.fullname,
+        email: request.user.email,
+        status: request.status.name,
+        products: boolean && newProducts,
+      };
+      return newObj;
+    });
     return newArray;
   },
 
@@ -46,7 +60,7 @@ const requestsService = {
           {
             model: Product,
             as: 'products',
-            through: { attributes: [] },
+            through: { attributes: ['quantity'] },
             attributes: ['id', 'name', 'value'],
           },
           { model: User, as: 'user', attributes: ['fullname', 'email'] },
@@ -57,8 +71,20 @@ const requestsService = {
   },
 
   create: async (object) => {
-    const request = await Request.create({ ...object });
-    return request;
+    const { userId, statusId, products } = object;
+
+    const result = await sequelize.transaction(async (t) => {
+      const request = await Request.create({ userId, statusId }, { transaction: t });
+      const newProducts = products.map((obj) => ({
+        productId: obj.productId,
+        requestId: request.id,
+        quantity: obj.quantity,
+      }));
+
+      const productsRequest = await ProductRequest.bulkCreate([...newProducts], { transaction: t });
+      return { ...request.toJSON(), productsRequest };
+    });
+    return result;
   },
 
   update: async (object, id) => {

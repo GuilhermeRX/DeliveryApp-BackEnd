@@ -13,20 +13,6 @@ module.exports = {
         },
         {
           product_id: 2,
-          request_id: 1,
-          quantity: 4,
-          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
-        },
-        {
-          product_id: 3,
-          request_id: 1,
-          quantity: 1,
-          created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
-          updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
-        },
-        {
-          product_id: 2,
           request_id: 2,
           quantity: 1,
           created_at: Sequelize.literal('CURRENT_TIMESTAMP'),

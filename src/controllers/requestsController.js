@@ -22,7 +22,8 @@ const requestsController = {
   update: async (req, res) => {
     const { id } = requestsService.validateParamsId(req.params);
     await requestsService.checkIfExists(id);
-    await requestsService.update(req.body, id);
+    const object = requestsService.validateBodyUpdate(req.body);
+    await requestsService.update(object, id);
     res.status(200).json({ id, ...req.body });
   },
 

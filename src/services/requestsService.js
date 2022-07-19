@@ -22,6 +22,10 @@ const requestsService = {
     })),
   })),
 
+  validateBodyUpdate: runSchema(Joi.object({
+    statusId: Joi.number.required().integer(),
+  })),
+
   checkIfExists: async (id) => {
     const request = await Request.findByPk(id);
     if (!request) throw new Error('Request not exists');

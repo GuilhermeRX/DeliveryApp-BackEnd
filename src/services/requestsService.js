@@ -12,6 +12,16 @@ const requestsService = {
     id: Joi.number().required().integer().positive(),
   })),
 
+  validateBody: runSchema(Joi.object({
+    userId: Joi.number().required().integer(),
+    statusId: Joi.number().required().integer(),
+    products: Joi.array().items(Joi.object({
+      productId: Joi.number().required().integer(),
+      requestId: Joi.number().required().integer(),
+      quantity: Joi.number().required().integer(),
+    })),
+  })),
+
   checkIfExists: async (id) => {
     const request = await Request.findByPk(id);
     if (!request) throw new Error('Request not exists');

@@ -14,7 +14,8 @@ const requestsController = {
   },
 
   create: async (req, res) => {
-    const request = await requestsService.create(req.body);
+    const object = requestsService.validateBody(req.body);
+    const request = await requestsService.create(object);
     res.status(201).json(request);
   },
 

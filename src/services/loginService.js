@@ -5,7 +5,7 @@ const jwtService = require('./jwtService');
 const loginService = {
   validateBody: (params) => {
     const schema = Joi.object({
-      email: Joi.string().required(),
+      email: Joi.string().email().required(),
       password: Joi.string().required(),
     });
     const { error, value } = schema.validate(params);

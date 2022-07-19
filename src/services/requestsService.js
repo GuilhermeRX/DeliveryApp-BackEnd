@@ -23,7 +23,7 @@ const requestsService = {
   })),
 
   validateBodyUpdate: runSchema(Joi.object({
-    statusId: Joi.number.required().integer(),
+    statusId: Joi.number().required().integer(),
   })),
 
   checkIfExists: async (id) => {

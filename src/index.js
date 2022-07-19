@@ -2,6 +2,7 @@ require('express-async-errors');
 require('dotenv').config();
 const express = require('express');
 
+const loginRouter = require('./routes/login.route');
 const usersRouter = require('./routes/users.route');
 const categoriesRouter = require('./routes/categories.route');
 const productsRouter = require('./routes/products.route');
@@ -12,6 +13,7 @@ const port = process.env.MYAPP_PORT;
 const app = express();
 app.use(express.json());
 
+app.use('/login', loginRouter);
 app.use('/users', usersRouter);
 app.use('/categories', categoriesRouter);
 app.use('/products', productsRouter);

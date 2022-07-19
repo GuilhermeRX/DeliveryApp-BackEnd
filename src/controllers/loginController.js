@@ -3,7 +3,7 @@ const loginService = require('../services/loginService');
 const loginController = {
   create: async (req, res) => {
     const body = loginService.validateBody(req.body);
-    const token = await loginService.create(body);
+    const token = await loginService.createToken(body);
     res.status(200).json({ token });
   },
 

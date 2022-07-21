@@ -17,5 +17,24 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "a59ecc2d-ad51-4a88-8208-254eb718667e",
+    "colId": "594f3fe1-b4a7-4345-b6fb-6f08581b9bc7",
+    "containerId": "6a887251-9ae5-4547-9487-3cdd5b69bc80",
+    "name": "All Products",
+    "url": "localhost:3000/products",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-07-19T18:30:35.567Z",
+    "modified": "2022-07-19T18:33:44.971Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZ3VpbGhlcm1lcngxOEBnbWFpbC5jb20iLCJpZCI6MSwiaWF0IjoxNjU4MjU1MzQ3LCJleHAiOjE2NTg4NjAxNDd9.4o6opeHob-MG0SZb0owKntdgUn-ZgyRS10BAFSHGx5c"
+      }
+    ],
+    "params": [],
+    "tests": []
   }
 ]

@@ -8,7 +8,7 @@ const categoriesRouter = require('./routes/categories.route');
 const productsRouter = require('./routes/products.route');
 const requestsRouter = require('./routes/requests.route');
 
-const port = process.env.MYAPP_PORT;
+const port = process.env.PORT;
 
 const app = express();
 app.use(express.json());

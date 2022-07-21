@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "nodemon --watch src src/index.js",
+    "dev": "nodemon --watch src src/index.js",
+    "start": "node src/index.js",
     "test": "mocha --color src/tests/**/*$NAME*.test.js --exit"
   },
   "keywords": [],

@@ -42,11 +42,11 @@
     "colId": "594f3fe1-b4a7-4345-b6fb-6f08581b9bc7",
     "containerId": "",
     "name": "Requests",
-    "url": "localhost:3000/requests",
+    "url": "localhost:3000/requests/1",
     "method": "GET",
     "sortNum": 30000,
     "created": "2022-07-21T21:06:37.285Z",
-    "modified": "2022-07-21T21:06:48.217Z",
+    "modified": "2022-07-21T21:42:17.744Z",
     "headers": [],
     "params": [],
     "tests": []

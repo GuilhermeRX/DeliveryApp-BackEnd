@@ -78,7 +78,7 @@ const requestsService = {
             through: { attributes: [] },
             attributes: [],
           },
-          { model: User, as: 'user', attributes: ['fullname', 'email'] },
+          { model: User, as: 'user', attributes: ['id', 'fullname', 'email'] },
           { model: RequestStatus, as: 'status', attributes: ['name'] },
         ],
       attributes: ['id', [sequelize.fn('sum', sequelize.literal('value * quantity')), 'total']],

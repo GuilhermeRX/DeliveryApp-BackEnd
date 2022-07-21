@@ -9,7 +9,7 @@ const Request = (sequelize, DataTypes) => {
   Request.associate = (models) => {
     Request.belongsTo(models.User, {
       foreignKey: 'userId',
-      as: 'user'
+      as: 'client'
     });
 
     Request.belongsTo(models.RequestStatus, {

@@ -46,8 +46,8 @@ const requestsService = {
     const newArray = array.map((request) => {
       const newObj = {
         request: request.id,
-        name: request.user.fullname,
-        email: request.user.email,
+        name: request.client.fullname,
+        email: request.client.email,
         status: request.status.name,
         total: request.toJSON().total,
       };
@@ -78,11 +78,11 @@ const requestsService = {
             through: { attributes: [] },
             attributes: [],
           },
-          { model: User, as: 'user', attributes: ['fullname', 'email'] },
+          { model: User, as: 'client', attributes: ['fullname', 'email'] },
           { model: RequestStatus, as: 'status', attributes: ['name'] },
         ],
       attributes: ['id', [sequelize.fn('sum', sequelize.literal('value * quantity')), 'total']],
-      group: ['id', 'User.id'],
+      group: ['Request.id', 'User.id'],
     });
     return requestsService.refactorAll(requests);
   },

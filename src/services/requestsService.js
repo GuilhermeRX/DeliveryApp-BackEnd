@@ -81,7 +81,7 @@ const requestsService = {
           { model: User, as: 'user', attributes: ['fullname', 'email'] },
           { model: RequestStatus, as: 'status', attributes: ['name'] },
         ],
-      attributes: ['Product.id', [sequelize.fn('sum', sequelize.literal('value * quantity')), 'total']],
+      attributes: ['id', [sequelize.fn('sum', sequelize.literal('value * quantity')), 'total']],
       group: ['Request.id'],
     });
     return requestsService.refactorAll(requests);
